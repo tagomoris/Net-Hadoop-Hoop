@@ -171,7 +171,7 @@ sub request {
     my @cookies = ();
     my $content_type = undef;
     for (my $i = 0; $i < scalar(@$headers); $i += 2) {
-        if ($headers->[$i] m!\Aset-cookie\Z!i) {
+        if ($headers->[$i] =~ m!\Aset-cookie\Z!i) {
             push @cookies, $headers->[$i+1];
         }
         elsif ($headers->[$i] =~ m!\Acontent-type\Z!i) {
