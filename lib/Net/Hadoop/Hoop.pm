@@ -149,7 +149,7 @@ sub request {
         path_query => $self->build_path($path, $op, %params),
     );
     my @headers = ();
-    if ($self->{cookies}) {
+    if ($self->{cookie}) {
         push @headers, (map {(Cookie => $_)} @{$self->{cookie}});
     }
     if ($content and ($method eq 'PUT' or $method eq 'POST')) {
@@ -162,8 +162,8 @@ sub request {
     my ($ver, $code, $msg, $headers, $body) = $self->{furl}->request(@request_params);
 
     # cookie expired
-    if ($self->{cookies} and $code == 401) {
-        $self->{cookies} = undef;
+    if ($self->{cookie} and $code == 401) {
+        $self->{cookie} = undef;
         # retry with user.name
         return $self->request($method, $path, $op, $content, %params);
     }
