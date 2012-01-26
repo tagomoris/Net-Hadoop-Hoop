@@ -207,3 +207,26 @@ sub request {
 }
 
 1;
+
+__END__
+
+=head1 NAME
+
+Net::Hadoop::Hoop - Hoop(Hadoop httpfs) client library
+
+=head1 SYNOPSIS
+
+  use Net::Hadoop::Hoop;
+  my $client = Net::Hadoop::Hoop->new(server => 'your.server', port => 14000, username => 'hoopuser');
+  $client->read('/path/of/your/file');
+
+=head1 AUTHOR
+
+TAGOMORI Satoshi E<lt>tagomoris {at} gmail.comE<gt>
+
+=head1 LICENSE
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut
